@@ -4,8 +4,8 @@
         <!-- 定义日志格式 -->
         <Property name="log.pattern">%d{MM-dd HH:mm:ss} [%t] %-5level %logger{36}%n%msg%n%n</Property>
         <!-- 定义文件名变量 -->
-        <Property name="file.err.filename">/log/err.log</Property>
-        <Property name="file.err.pattern">/log/err.%i.log.gz</Property>
+        <Property name="file.err.filename">${web:rootDir}/logs/err.log</Property>
+        <Property name="file.err.pattern">${web:rootDir}/logs/err.%i.log.gz</Property>
     </Properties>
     <!-- 定义Appender，即目的地 -->
     <Appenders>
