@@ -8,9 +8,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>$Title$</title>
+    <title>Bad thing happened</title>
 </head>
 <body>
-$END$
+${exception.exceptionMsg}
 </body>
 </html>
