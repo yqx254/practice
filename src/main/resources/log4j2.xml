@@ -2,7 +2,7 @@
 <Configuration>
     <Properties>
         <!-- 定义日志格式 -->
-        <Property name="log.pattern">%d{MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36}%n%msg%n%n</Property>
+        <Property name="log.pattern">%d{MM-dd HH:mm:ss} [%t] %-5level %logger{36}%n%msg%n%n</Property>
         <!-- 定义文件名变量 -->
         <Property name="file.err.filename">/log/err.log</Property>
         <Property name="file.err.pattern">/log/err.%i.log.gz</Property>
