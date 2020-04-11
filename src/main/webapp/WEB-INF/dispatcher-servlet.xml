@@ -24,7 +24,19 @@
         <property name="suffix" value=".jsp"/>
         <property name="exposeContextBeansAsAttributes" value="true"/>
     </bean>
-
+    <bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+        <property name="exceptionMappings" >
+            <props>
+                <prop key="example.service.IllegalException">
+                    Exception/illegalException
+                </prop>
+                <prop key="example.service.InputException">
+                    Exception/inputException
+                </prop>
+            </props>
+        </property>
+        <property name="defaultErrorView" value="error"/>
+    </bean>
     <!-- 自动扫描装配 -->
     <context:component-scan base-package="example.controller"/>
 </beans>
