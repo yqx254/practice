@@ -2,17 +2,21 @@ package example.controller;
 
 
 
+import example.dao.CustomerJdbcTemplateImpl;
 import example.models.Customer;
 import example.service.IllegalException;
 import example.service.InputException;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.context.ContextLoader;
+import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
@@ -21,9 +25,13 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class CustomerController {
     Log log = LogFactory.getLog(CustomerController.class);
+
     @RequestMapping(value = "/customer", method = RequestMethod.GET)
     public ModelAndView customer(){
-        return new ModelAndView("customer","command",new Customer());
+        WebApplicationContext wac = ContextLoader.getCurrentWebApplicationContext();
+        CustomerJdbcTemplateImpl customerJdbcTemplate = (CustomerJdbcTemplateImpl) wac.getBean("customerJdbcTemplateImpl");
+        Customer customer = customerJdbcTemplate.getCustomer("73bb82109ead3758a8b876703993d02b ");
+        return new ModelAndView("customer","command",customer);
     }
     @RequestMapping(value = "/addCustomer" , method = RequestMethod.POST)
     @ExceptionHandler({InputException.class, IllegalException.class})
