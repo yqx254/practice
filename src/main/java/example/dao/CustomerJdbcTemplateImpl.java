@@ -16,7 +16,11 @@ public class CustomerJdbcTemplateImpl implements  CustomerDAO{
     }
     public Customer getCustomer(String id){
         String sql = "SELECT * from fs_customer WHERE id = ?";
-       System.out.println("wtf is going on????");
         return  jdbcTemplate.queryForObject(sql, new Object[]{id}, new CustomerMapper());
+    }
+
+    public void setCustomer(Customer customer){
+        String sql = "UPDATE fs_customer SET username = ?, mobile = ?, city_code = ? WHERE id = \"73bb82109ead3758a8b876703993d02b\" ";
+        jdbcTemplate.update(sql, customer.getUsername(), customer.getUsername(), customer.getCityCode());
     }
 }

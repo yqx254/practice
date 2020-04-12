@@ -30,7 +30,7 @@ public class CustomerController {
     public ModelAndView customer(){
         WebApplicationContext wac = ContextLoader.getCurrentWebApplicationContext();
         CustomerJdbcTemplateImpl customerJdbcTemplate = (CustomerJdbcTemplateImpl) wac.getBean("customerJdbcTemplateImpl");
-        Customer customer = customerJdbcTemplate.getCustomer("73bb82109ead3758a8b876703993d02b ");
+        Customer customer = customerJdbcTemplate.getCustomer("73bb82109ead3758a8b876703993d02b");
         return new ModelAndView("customer","command",customer);
     }
     @RequestMapping(value = "/addCustomer" , method = RequestMethod.POST)
@@ -39,12 +39,14 @@ public class CustomerController {
         if(customer.getMobile().length() < 11){
             log.error("Invalid mobile: " +customer.getMobile());
             throw new InputException("Mobile is too short");
-
         }
         if(customer.getCityCode() != 530100){
             log.error("Invalid city code" + customer.getCityCode());
             throw new IllegalException("Service unavailable in your city");
         }
+        WebApplicationContext wac = ContextLoader.getCurrentWebApplicationContext();
+        CustomerJdbcTemplateImpl customerJdbcTemplate = (CustomerJdbcTemplateImpl) wac.getBean("customerJdbcTemplateImpl");
+        customerJdbcTemplate.setCustomer(customer);
         modelMap.addAttribute("username",customer.getUsername());
         modelMap.addAttribute("mobile",customer.getMobile());
         modelMap.addAttribute("cityCode",customer.getCityCode());
