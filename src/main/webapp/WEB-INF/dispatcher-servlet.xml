@@ -14,6 +14,7 @@
 
     <!--静态资源映射-->
     <!--本项目把静态资源放在了webapp的statics目录下，资源映射如下-->
+    <mvc:resources mapping="/pages/**" location="/WEB-INF/statics/pages/"/>
     <mvc:resources mapping="/statics/**" location="/WEB-INF/statics/" />
 
     <!-- 对模型视图名称的解析，即在模型视图名称添加前后缀(如果最后一个还是表示文件夹,则最后的斜杠不要漏了) 使用JSP-->
@@ -25,6 +26,19 @@
         <property name="exposeContextBeansAsAttributes" value="true"/>
     </bean>
 
+    <bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+        <property name="exceptionMappings">
+            <props>
+                <prop key="example.service.InputException">
+                    Exception/inputException
+                </prop>
+                <prop key="example.service.IllegalException">
+                    Exception/illegalException
+                </prop>
+            </props>
+        </property>
+        <property name="defaultErrorView" value="error"/>
+    </bean>
     <!-- 自动扫描装配 -->
     <context:component-scan base-package="example.controller"/>
 </beans>

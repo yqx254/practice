@@ -1,0 +1,9 @@
+04-10 15:19:03 [http-bio-8003-exec-5] ERROR example.controller.CustomerController
+new customer from city0 consider building a sub site?
+
+04-10 15:19:19 [http-bio-8003-exec-5] ERROR example.controller.CustomerController
+new customer from city0 consider building a sub site?
+
+04-10 15:24:30 [http-bio-8003-exec-4] ERROR example.controller.CustomerController
+new customer from city0 consider building a sub site?
+
