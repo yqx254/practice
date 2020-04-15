@@ -6,11 +6,14 @@
     <context:component-scan base-package="example"/>
     <bean id ="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
-        <property name="url" value="jdbc:mysql://localhost:3306/fangstar?serverTimezone=GMT"/>
-        <property name="username" value="root"/>
-        <property name="password" value="yqx1989254"/>
+        <property name="url" value="jdbc:mysql://192.168.10.21:3306/fangstar?serverTimezone=GMT&amp;useUnicode=true&amp;characterEncoding=UTF-8"/>
+        <property name="username" value="yqx"/>
+        <property name="password" value="_MZ0mY2HcgjdUFWV_7"/>
     </bean>
     <bean id="customerJdbcTemplateImpl"  class="example.dao.CustomerJdbcTemplateImpl">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+    <bean id="keywordJdbcTemplateImpl" class="example.dao.KeyWordJdbcTempateImpl">
         <property name="dataSource" ref="dataSource"/>
     </bean>
 </beans>
