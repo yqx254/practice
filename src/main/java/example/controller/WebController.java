@@ -24,5 +24,4 @@ public class WebController {
     public String finalPage(){
         return "login/final";
     }
-
 }

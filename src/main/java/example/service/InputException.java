@@ -8,7 +8,6 @@ public class InputException extends  RuntimeException{
     public InputException(String exceptionMsg){
         this.exceptionMsg = exceptionMsg;
     }
-
     public String getExceptionMsg() {
         return exceptionMsg;
     }
